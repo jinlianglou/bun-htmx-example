@@ -1,6 +1,6 @@
 # bun-htmx-example
 
-## 此项目是使用Bun 搭建的server,可以处理接口，html, 及其它静态资源。其中写了两个页面，两个接口。html中使用的htmx(https://htmx.org/docs)框架，接口返回html片段。
+## 此项目是使用Bun 搭建的serve,可以处理接口，html, 及其它静态资源。其中写了两个页面，两个接口。html中使用的[htmx框架](https://htmx.org/docs)，接口返回html片段。
 
 ### 电脑上先有docker
 
