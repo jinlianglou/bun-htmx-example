@@ -25,13 +25,18 @@ Bun.serve({
         return new Response(error.message, {status: 500})
     }
 })
-
+/**
+ * 页面
+ */
 function pages(req: Request, pathname: string) : Response{
     if(pathname === '' || pathname === '/'){
         return new Response(Bun.file(`${import.meta.dir}/pages/index.html`))
     }
     return new Response(Bun.file(`${import.meta.dir}/pages${pathname}.html`))
 }
+/**
+ * 静态资源
+ */
 function staticFiles(req: Request, pathname: string): Response {
     return new Response(Bun.file(`${decodeURIComponent(pathname).replace(/^\//, '')}`))
 }
