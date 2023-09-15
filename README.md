@@ -10,16 +10,10 @@
 docker build -t mybun:latest .
 ```
 
-2、 To install dependencies:
+2、run bun container: (记得把"C:\Users\ljl\test\bun-htmx-example"替换成你磁盘上的项目路径)
 
 ```bash
-bun install
-```
-
-3、run bun container: (记得把"C:\Users\ljl\test\bun-htmx-example"替换成你磁盘上的项目路径)
-
-```bash
-docker -p 3000:3000 -v C:\Users\ljl\test\bunproject:/home/bun/app mybun:latest
+docker run --restart=always -p 3000:3000 -v C:\Users\ljl\test\bunproject:/home/bun/app mybun:latest
 ```
 
 4、访问 http://localhost:3000
