@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                        transparent: 'transparent',
+                        current: 'currentColor',
+                        'white': '#ffffff',
+                        'purple': '#3f3cbb',
+                        'midnight': '#121063',
+                        'metal': '#565584',
+                        'tahiti': '#3ab7bf',
+                        'silver': '#ecebff',
+                        'bubble-gum': '#ff77e9',
+                        'bermuda': '#78dcca',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fi {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        .container .fadeIn{
+            animation: fi 1s ease forwards;
+        }
+        .nav li.active{
+            color: aquamarine;
+        }
+    </style>
+    <title>hi Bun</title>
+</head>
+
+<body>
+    <header class="h-14 bg-gradient-to-r from-sky-500 to-indigo-500">
+        <div class="container max-w-screen-md mx-auto">
+            <ul class="h-14 flex items-center nav">
+                <li class="px-4 cursor-pointer font-semibold text-white active"><a href="/">首页</a></li>
+                <li class="px-4 cursor-pointer font-semibold text-white"><a href="/upload">上传文件</a></li>
+            </ul>
+        </div>
+    </header>
+    <h1 class="text-3xl font-bold text-clifford text-center px-1 py-1">
+        Hello Bun!
+    </h1>
+    <div class="container mx-auto max-w-screen-md text-center">
+        <img id="face" class="mx-auto" src="/static/images/赞赏答谢图.gif" alt="">
+        <button class="bg-fuchsia-400 px-10 py-2 my-5 rounded text-slate-200" hx-get="/api/getFace" hx-swap="outerHTML"
+            hx-target="#face">换张图</button>
+        </div>
+    </div>
+    <script>
+        let myDiv = document.getElementById('face')
+        fetch('/api/getFace')
+            .then(response => response.text())
+            .then(data => { myDiv.outerHTML = data; htmx.process(myDiv); } );
+    </script>
+</body>
+
+</html>
